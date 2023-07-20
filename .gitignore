@@ -1,7 +1,7 @@
 figures/*
 
 data/raw_data/*
-data/chirp_configurations_1/*
+data/chirp_configurations/*
 
 
 *.asv
