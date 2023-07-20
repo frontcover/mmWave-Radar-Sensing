@@ -28,7 +28,7 @@
     <img src="https://i.ibb.co/9h0ykcG/mmwave-personal-Demo-2.png" alt="drawing" height="300"/>
 
 - *Running Pipeline Matlab Code*
-    - Open the *signal_processing_pipeline.m* file. This is the only file you will need to use.
+    - Open the **signal_processing_pipeline.m** file in the *matlab_dsp_pipeline* directory. This is the only file you will need to use.
     - Enter the parameters corresponding to the setup of your experiment in the first section of code
     - Run the rest of the sections in the file to produce the plots corresponding to the results of the experiment, which are currently as follows
         - **Phase Plot**
@@ -63,4 +63,4 @@ All signal processing files are in the root directory.
     - **range_fft_locator.m**: MATLAB function for performing range-FFT on given chirp and identifies closest object
     - **reshape_by_chrip.m**: MATLAB function for reshaping the single rowed receiver data to a matrix where each row corresponds to the ADC samples corresponding to each chirp
     - **retrieve_adcData.m**: MATLAB function for reading .bin file into raw numeric data
-    - **signal_processing_pipeline.m**: MATLAB file for compiling all of the other function into a complete end-to-end pipeline for processing the radar data and generating the results
+    - **signal_processing_pipeline.m**: MATLAB file for compiling all of the MATLAB functions in this directory into a complete end-to-end pipeline for processing the radar data and generating the results
