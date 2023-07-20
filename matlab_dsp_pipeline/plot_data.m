@@ -1,4 +1,6 @@
-function plot_data(loco, chirpfft, distance, dbfs, locs, pks, phase_time, iqData, first_peak)
+function plot_data(loco, chirpfft, distance, dbfs, locs, pks, phase_time, ...
+    iqData, first_peak, frame_periodicity, n_chirps, highpass_cutoff, ...
+    chirpDuration, total_num_chirps, fileName)
 
     disp("Polynomial fitting for removing fame reset artifacts...")
     x = 1:length(phase_time);
@@ -24,10 +26,10 @@ function plot_data(loco, chirpfft, distance, dbfs, locs, pks, phase_time, iqData
     % phase_time(phase_time < -pi) = phase_time(phase_time < -pi) + pi;   
     
     plot(mytime,phase_time)
-    title("Phase Plot for Experiment:" + strrep(exp_name,"_"," "))
+    title("Phase Plot for Experiment:" + strrep(fileName,"_"," "))
     ylabel("Phase (Radians)")
     xlabel("Time (s)")
-    % saveas(gcf,"figures/7_11_experiments/" + exp_name + "_phase_plot.png")
+    % saveas(gcf,"figures/7_11_experiments/" + fileName + "_phase_plot.png")
     
     
     phase_change = phase_time(1,1:total_num_chirps-1) - phase_time(1,2:total_num_chirps);
@@ -35,17 +37,17 @@ function plot_data(loco, chirpfft, distance, dbfs, locs, pks, phase_time, iqData
     
     subplot(3,2,2)
     plot(mytime(1,1:total_num_chirps), vibrations)
-    title("Vibration plot for Experiment:"+ strrep(exp_name,"_"," "))
+    title("Vibration plot for Experiment:"+ strrep(fileName,"_"," "))
     ylabel("Vibration Displacement (mm)")
     xlabel("Time (s)")
-    % saveas(gcf,"figures/7_11_experiments/" + exp_name + "_vibration_plot.png")
+    % saveas(gcf,"figures/7_11_experiments/" + fileName + "_vibration_plot.png")
     
     subplot(3,2,3)
     spectrogram(vibrations,128,64,200, 10.2e3, "yaxis")
-    title("Vibration Spectrogram for Experiment: " + strrep(exp_name,"_"," "))
+    title("Vibration Spectrogram for Experiment: " + strrep(fileName,"_"," "))
     % ylim([0 200])
     xlabel("Time (s)")
-    % saveas(gcf,"figures/7_11_experiments/" + exp_name + "_vib_spectrogram_plot.png")
+    % saveas(gcf,"figures/7_11_experiments/" + fileName + "_vib_spectrogram_plot.png")
     
     subplot(3,2,4)
     scatter(real(iqData)*1e-4,imag(iqData)*1e-4, "filled")
@@ -53,7 +55,7 @@ function plot_data(loco, chirpfft, distance, dbfs, locs, pks, phase_time, iqData
     max_y = max(imag(iqData)*1e-4) + 1;
     min_x = min(real(iqData)*1e-4) - 1;
     min_y = min(imag(iqData)*1e-4) - 1;
-    title("IQ Plot for Experiment: " + strrep(exp_name,"_"," "))
+    title("IQ Plot for Experiment: " + strrep(fileName,"_"," "))
     xlabel("In-Phase Component")
     ylabel("Quadrature Component")
     % xlim([min_x max_x])
@@ -71,8 +73,8 @@ function plot_data(loco, chirpfft, distance, dbfs, locs, pks, phase_time, iqData
     set(gca,'XMinorTick','on')
     ylabel("Frequency Magnitude (dBFS)")
     xlim([0 3])
-    title("Range-FFT of "+ strrep(exp_name,"_"," "))
-    % saveas(gcf,"figures/7_11_experiments/" + exp_name + "_iq_plot.png")
+    title("Range-FFT of "+ strrep(fileName,"_"," "))
+    % saveas(gcf,"figures/7_11_experiments/" + fileName + "_iq_plot.png")
     
     subplot(3,2,6)
     plot([0 1 2 3],[0 1 2 3], "--","Color", [0 0 1])

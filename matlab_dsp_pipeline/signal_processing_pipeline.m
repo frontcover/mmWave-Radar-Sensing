@@ -11,7 +11,11 @@ numADCSamples = 256; numADCBits = 16; chirp_slope = 105e12; Fs = 1e7;
 % enter relative path within data/raw_data directory without .bin extension
 fileName = "7_18/slowdrums_speaker_absorber_exp_Raw_0"; 
 
+%number of files produced by mmWave Studio for the experiment
+numFiles = 1;
+
 numRX = 4; % number of recievers used
+whichRX = 2; % which receiver to use for data processing
 chirId = 100; % which chirp to use for Range-FFT, doesn't matter for static experiments                
 n_chirps = 128; % number of chirps per experiment
 chirpDuration = 98; % idle time + ramp end time as per mmWave Studio Settings (in microseconds)
@@ -23,6 +27,7 @@ FFT_window = "han"; % window used for FFT
 
 % run this cell to read in .bin file to convert bin data to IQ radar readings
 
+
 [chirpData, total_num_chirps] = process_radar_data(char(fileName), numRX, ...
     whichRX, numADCBits, numADCSamples, numFiles);
 
@@ -33,7 +38,7 @@ FFT_window = "han"; % window used for FFT
 disp("Identifying range of nearest object...")
 [loco, chirpfft, distance, dbfs, locs, pks] = range_fft_locator( ...
     numADCSamples, chirp_slope, Fs, chirpData, chirId, "han",0.5, ...
-    strrep(exp_name,"_"," "),false);
+    strrep(fileName,"_"," "),false);
 
 disp("Extracting phase of nearest object...")
 [phase_time, iqData, first_peak] = phase_data(loco, total_num_chirps, ...
@@ -45,4 +50,5 @@ disp("Extracting phase of nearest object...")
 %cells. May need to rerun this cell if the first two plots do not appear
 %after the first time you run this cell
 plot_data(loco, chirpfft, distance, dbfs, locs, pks, phase_time, ...
-    iqData, first_peak)
+    iqData, first_peak, frame_periodicity, n_chirps, highpass_cutoff, ...
+    chirpDuration, total_num_chirps, fileName)
