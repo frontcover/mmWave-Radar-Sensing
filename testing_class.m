@@ -4,7 +4,7 @@ numADCSamples = 256;
 numADCBits = 16;
 chirp_slope = 105e12;
 Fs = 1e7;
-exp_name = "vibstage_15hz_low_high_Raw";
+exp_name = "vibstage_30hz_low_Raw";
 numRX = 4;
 chirId = 100;
 n_chirps = 128;
@@ -62,8 +62,8 @@ min_y = min(imag(iqData)*1e-4) - 1;
 title("IQ Plot for Experiment: " + strrep(exp_name,"_"," "))
 xlabel("In-Phase Component")
 ylabel("Quadrature Component")
-xlim([min_x max_x])
-ylim([min_y max_y])
+% xlim([min_x max_x])
+% ylim([min_y max_y])
 xline(0)
 yline(0)
 

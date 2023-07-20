@@ -23,8 +23,8 @@ function [location, chripfft, dist, dbfs, locs, pks] = range_fft_locator(numADCS
     [pks, locs] = findpeaks(dbfs);
     pks = pks((locs > cutoff));
     locs = locs(locs>cutoff);
-    locs = locs((pks > -10));
-    pks = pks((pks > -10));
+    locs = locs((pks > -12));
+    pks = pks((pks > -12));
 
     %setting up FFT plot x-axis
     freq= [0:numADCSamples-1] * Fs;    

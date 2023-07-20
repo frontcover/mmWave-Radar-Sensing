@@ -1,4 +1,4 @@
-function [phase_time, iqData] = phase_data(location, total_num_chirps, chirpData, window, numADCSamples);
+function [phase_time, iqData, first_peak] = phase_data(location, total_num_chirps, chirpData, window, numADCSamples)
     
     NRangeBin = pow2(nextpow2(numADCSamples));
     
@@ -12,6 +12,7 @@ function [phase_time, iqData] = phase_data(location, total_num_chirps, chirpData
     end
 
     phase_time = zeros(1, total_num_chirps);
+    first_peak = zeros(1, total_num_chirps);
     iqData = zeros(1, total_num_chirps);
     for i=1:total_num_chirps
         curr_fft = fft(chirpData(i,:) .* win', NRangeBin);
