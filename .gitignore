@@ -1,4 +1,6 @@
 figures/*
-data/*
+data/raw_data/*
+data/chirp_configurations/*
+
 
 *.asv
