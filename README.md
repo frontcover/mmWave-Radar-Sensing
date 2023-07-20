@@ -17,7 +17,7 @@
 
     <img src="https://i.ibb.co/jk34Tdc/mmwave-personal-Demo.png" alt="drawing" height="300"/>
 
-    - Depending on the amount of data captured by the radar, mmWave Studio will save 1 or more files because each file it produces has to be 1 GBat most. Currently, the signal processing pipeline
+    - Depending on the amount of data captured by the radar, mmWave Studio will save 1 or more files because each file it produces has to be 1 GB at most. Currently, the signal processing pipeline
     can only accomodate an experiment with up to two files; however, the pipeline can be easily adjusted to accomodate more than 2 files per experiment if needed
 
 - *Saving Chrip Configuration*
@@ -28,7 +28,7 @@
     <img src="https://i.ibb.co/9h0ykcG/mmwave-personal-Demo-2.png" alt="drawing" height="300"/>
 
 - *Running Pipeline Matlab Code*
-    - Open the **signal_processing_pipeline.m** file in the *matlab_dsp_pipeline* directory. This is the only file you will need to use.
+    - Open the **signal_processing_pipeline.m** file in the *matlab_dsp_pipeline* directory found in the root directory. This is the only file you will need to use.
     - Enter the parameters corresponding to the setup of your experiment in the first section of code
     - Run the rest of the sections in the file to produce the plots corresponding to the results of the experiment, which are currently as follows
         - **Phase Plot**
