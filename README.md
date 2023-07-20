@@ -12,16 +12,18 @@
 
 
 - *Data Placement*
-    - Before clicking on the "DCA1000 ARM" button shown below. Replace the the path shown below with the following: "<path_to_repo>\mmWave-Radar-Sensing\data\raw_data"
+    - Before clicking on the "DCA1000 ARM" button shown below. Replace the the path shown below with the following: "<path_to_repo>\mmWave-Radar-Sensing\data\raw_data". The pipeline is built to process the data from that
+    specific directory hence why that path is important.
 
     <img src="https://i.ibb.co/jk34Tdc/mmwave-personal-Demo.png" alt="drawing" height="300"/>
 
-    - Depending on the amount of data captured by the radar, mmWave Studio will save 1 or more files because each file it produces has to be at most 1 GB. Currently, the signal processing pipeline
-    can only accomodate an exeriment with up to two files; however, the pipeline can be easily adjusted to accomodate more than 2 files per experiment
+    - Depending on the amount of data captured by the radar, mmWave Studio will save 1 or more files because each file it produces has to be 1 GBat most. Currently, the signal processing pipeline
+    can only accomodate an experiment with up to two files; however, the pipeline can be easily adjusted to accomodate more than 2 files per experiment if needed
 
 - *Saving Chrip Configuration*
 
-    - Make sure that you save the chrip configuration for your experiment because the chirp parameters are needed for signal processing later. Feel free to save the file under "<path_to_repo>\mmWave-Radar-Sensing\data\raw_data"
+    - Make sure that you save the chrip configuration for your experiment because the chirp parameters are needed for signal processing later. Feel free to save the file under "<path_to_repo>\mmWave-Radar-Sensing\data\chrip_configurations". 
+    This path is not specifically used in the signal processing pipeline. It's simply there for convenience whenever manual reference is needed later to input those parameters into the pipeline.
 
     <img src="https://i.ibb.co/9h0ykcG/mmwave-personal-Demo-2.png" alt="drawing" height="300"/>
 
@@ -49,16 +51,16 @@ All signal processing files are in the root directory.
 
 ## Repository Structure
 
-    - [ ] *data*
-        - [ ] *chirp_configurations*: used for storing chirp configuration to store the parameters needed for running the signal processing pipeline
-        - [ ] *raw_data*: used for storing mmWave Studio produced data. This directory is used in the signal processing pipeline
-    - [ ] *lua_code*: The lua_code directory consists of files that can be used within mmWave Studio to automate radar operation. Currently not developed nor relevant. Stored in case it's useful for later.
-    - [ ] *matlab_dsp_pipeline*: stores the entire MATLAB based signal processing and results plotting pipeline
-        - **combine_bin_files.m**: MATLAB function used for combining the data from multiple .bin files if the experiment requires multiple .bin data files
-        - **local_reading_bin_file.m**: MATLAB function used for converting .bin data to the corresponding IQ ADC samples per receiver that were collected by the radar
-        - **phase_data.m**: MATLAB function that extracts the phase data corresponding to the reverberating object accross all of the chirps
-        - **plot_data.m**: MATLAB function the plots all the results in 6 plots as described in the *Running Pipeline Matlab Code* subsection under *Operating the Signal Processing Pipeline* section
-        - **range_fft_locator.m**: MATLAB function for performing range-FFT on given chirp and identifies closest object
-        - **reshape_by_chrip.m**: MATLAB function for reshaping the single rowed receiver data to a matrix where each row corresponds to the ADC samples corresponding to each chirp
-        - **retrieve_adcData.m**: MATLAB function for reading .bin file into raw numeric data
-        - **signal_processing_pipeline.m**: MATLAB file for compiling all of the other function into a complete end-to-end pipeline for processing the radar data and generating the results
+- [ ] *data*
+    - [ ] *chirp_configurations*: used for storing chirp configuration to store the parameters needed for running the signal processing pipeline
+    - [ ] *raw_data*: used for storing mmWave Studio produced data. This directory is used in the signal processing pipeline
+- [ ] *lua_code*: The lua_code directory consists of files that can be used within mmWave Studio to automate radar operation. Currently not developed nor relevant. Stored in case it's useful for later.
+- [ ] *matlab_dsp_pipeline*: stores the entire MATLAB based signal processing and results plotting pipeline
+    - **combine_bin_files.m**: MATLAB function used for combining the data from multiple .bin files if the experiment requires multiple .bin data files
+    - **local_reading_bin_file.m**: MATLAB function used for converting .bin data to the corresponding IQ ADC samples per receiver that were collected by the radar
+    - **phase_data.m**: MATLAB function that extracts the phase data corresponding to the reverberating object accross all of the chirps
+    - **plot_data.m**: MATLAB function the plots all the results in 6 plots as described in the *Running Pipeline Matlab Code* subsection under *Operating the Signal Processing Pipeline* section
+    - **range_fft_locator.m**: MATLAB function for performing range-FFT on given chirp and identifies closest object
+    - **reshape_by_chrip.m**: MATLAB function for reshaping the single rowed receiver data to a matrix where each row corresponds to the ADC samples corresponding to each chirp
+    - **retrieve_adcData.m**: MATLAB function for reading .bin file into raw numeric data
+    - **signal_processing_pipeline.m**: MATLAB file for compiling all of the other function into a complete end-to-end pipeline for processing the radar data and generating the results
